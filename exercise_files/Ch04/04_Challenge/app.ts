@@ -1,6 +1,21 @@
+interface Person{
+    name: string;
+    age: number
+}
+
+interface Query<T> {
+    (value: T): boolean;
+}
+
+type MatchQuery = Record<keyof Person, Query<string | number>>;
+
+type MatchQuery1 = {
+    [ T in keyof Person] : Query<Person[T]>
+}
+
 function query<T>(
     items: T[],
-    query: any // <--- replace this!
+    query: MatchQuery1 // <--- replace this! 
 ) {
     return items.filter(item => {
         // iterate through each of the item's properties

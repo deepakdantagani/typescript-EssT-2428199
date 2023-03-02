@@ -1,5 +1,5 @@
-let x = { name: "Wruce Bayne" };
-x.id = 1234;
+// let x = { name: "Wruce Bayne" };
+// x.id = 1234;
 
 
 
@@ -16,8 +16,8 @@ interface Address {
 interface Contact {
     id: number;
     name: string;
-    status: ContactStatus;
-    address: Address;
+    status?: ContactStatus;
+    address?: Address;
 }
 
 interface Query {
@@ -27,7 +27,7 @@ interface Query {
 
 function searchContacts(contacts: Contact[], query) {
     return contacts.filter(contact => {
-        for (const property of Object.keys(contact)) {
+        for (const property of Object.keys(contact)) { [id, name]
             // get the query object for this property
             const propertyQuery = query[property];
             // check to see if it matches
@@ -41,7 +41,7 @@ function searchContacts(contacts: Contact[], query) {
 }
 
 const filteredContacts = searchContacts(
-    [/* contacts */],
+    [{ id: 123, name: "Carol Weaver" }],
     {
         id: { matches: (id) => id === 123 },
         name: { matches: (name) => name === "Carol Weaver" },
